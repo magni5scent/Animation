@@ -1,0 +1,1 @@
+Mixed two of my projects together to get this. Much CSS and a little JS. Knowing more about the Psuedocodes.
