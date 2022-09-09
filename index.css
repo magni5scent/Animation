@@ -1,0 +1,218 @@
+:root {
+    --bg-color: white;
+    --typewriterSpeed: 6s;
+    --typewriterCharacters: 22;
+}
+
+body {
+    margin: 0;
+    font-family: cursive;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background: white;
+}
+
+h1 {
+    font-size: clamp(1rem, 3vwm + 1rem, 4rem);
+    position: relative;
+    font-family: cursive;
+    position: relative;
+    width: max-content;
+}
+
+h1::before,
+h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+h1::before {
+    background: var(--bg-color);
+    animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards;
+}
+
+h1::after {
+    width: 0.125em;
+    background: black;
+    animation: typewriter var(--typewriterSpeed) steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(22) infinite;
+
+}
+
+
+.subtitle {
+    color: black;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeInUp 2s ease 
+    calc(var(--typewriterSpeed) + 2s) forwards;
+}
+
+.container {
+    margin-top: 90px;
+    opacity: 0;
+    transform: translateY(5rem);
+    animation: fadeInOut 4s ease
+    calc(var(--typewriterSpeed) + 3s) forwards;
+}
+
+.navigation {
+    width: 400px;
+    height: 70px;
+    background: black;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+
+.navigation ul {
+    display: flex;
+    width: 350px;
+}
+
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 100;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 47%;
+    text-align: center;
+    font-weight: 200px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    line-height: 110px;
+    font-size: 2rem;
+    transition: 0.7s;
+    color: blue;
+}
+
+.navigation ul li.active a .icon {
+    transform: translateY(-50px);
+}
+
+
+.navigation ul li a .text {
+    position: absolute;
+    top: 30px;
+    color: white;
+    font-weight: 0.75cm;
+    font-size: 0.90em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.navigation ul li.active a .text {
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.indicator {
+    top: -40px;
+    left: 25px;
+    position: absolute;
+    width: 70px;
+    height: 66px;
+    background: lightblue;
+    border-radius: 50%;
+    border: 6px solid black;
+    transition: 0.4s;
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    left: -22px;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -20px 0 0 transparent;
+}
+
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    right: -22.6px;
+    border-top-left-radius: 22px;
+    box-shadow: -1px -10px 0 0 transparent;
+}
+
+
+.navigation ul li:nth-child(1).active ~ .indicator {
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(70px * 1));
+}
+
+
+.navigation ul li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator {
+    transform: translateX(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator {
+    transform: translateX(calc(70px * 4));
+}
+
+
+@keyframes typewriter {
+    to{
+        left: 100%
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes  fadeInUp{
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInOut {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
